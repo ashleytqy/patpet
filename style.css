@@ -1,0 +1,26 @@
+body {
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	font-family: 'Helvetica';
+}
+
+
+body, html {
+    cursor: url('handyy.svg'), pointer;
+}
+
+
+#game {
+	position: absolute;
+	top: 20%;
+}
+
+#text {
+	font-size: 3em;
+	font-weight: bolder;
+}
+
+#wind > img {
+	z-index: -1;
+}
