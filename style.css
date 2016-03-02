@@ -21,6 +21,28 @@ body, html {
 	font-weight: bolder;
 }
 
-#wind > img {
+#screen > img {
 	z-index: -1;
+}
+
+
+.footer {
+  z-index: 2;
+  color: grey;
+  padding: 1em;
+  font-size: .8em;
+  right: 20px;
+  bottom: 10px;
+  position: absolute;
+  text-align: right;
+  cursor: pointer;
+}
+
+.footer > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer > a:hover {
+  text-decoration: underline;
 }
