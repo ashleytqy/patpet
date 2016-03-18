@@ -1,32 +1,45 @@
 $(window).load(function () {
-
-
-Crafty.init(500,350, document.getElementById('game'));
-
-
-var count = 0;
+	
+ Crafty.init(500,350, document.getElementById('game'));
+	
+ var width = 1;
+ var count = 0;
+ var imageCount = 0;
 
  var myEntity = Crafty.e('2D, DOM, Mouse, Image')
-.image("cat.png")
-.bind('MouseMove', function(e){
- 	Crafty.log('mouse is moving', e);
- 	count += 1;
- 	Crafty.log(count);
-	if (count % 5 == 0 ) {
-	var bodyWidth = document.body.clientWidth;
-  var bodyHeight = document.body.clientHeight;
-  var randPosX = Math.floor((Math.random()*bodyWidth));
-  var randPosY = Math.floor((Math.random()*bodyHeight));
-  var image = document.createElement("img");
-  image.src = 'images/kenma.png';
-  image.style.position = "absolute";
-	image.style.top = randPosY + "px";
-	image.style.left = randPosX + "px";
+.image("images/cat.png")
+.bind('MouseMove', function (e){
 
-		  document.getElementById("wind").appendChild(image);
+ 		count += 1;
+    
+
+		if (count % 30 == 0 ) {
+        if ( imageCount < 9) {
+          imageCount +=1;
+        } else {
+          imageCount = 1;
+        };
+        
+			  var bodyWidth = window.innerWidth;
+  			var bodyHeight = window.innerHeight;
+  			var randPosX = Math.floor((Math.random()*bodyWidth)) - 50;
+  			var randPosY = Math.floor((Math.random()*bodyHeight)) - 50;
+  			var image = document.createElement("img");
+  			image.src = 'images/' + imageCount + '.svg';
+  			image.style.top = randPosY + "px";
+			  image.style.left = randPosX + "px";
+  			image.style.position = "absolute";
+  			document.getElementById("screen").appendChild(image);
 		};
+
+    if ((count % 50 == 0) && (width < 100)) {
+       // move();
+       var elem = document.getElementById("myBar");   
+       width += 5;
+       elem.style.width = width + '%'; 
+    }
 });
 
-
+  
 
 });
