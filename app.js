@@ -6,12 +6,16 @@ $(window).load(function () {
  var count = 0;
  var imageCount = 0;
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+} 
+
  var myEntity = Crafty.e('2D, DOM, Mouse, Image')
 .image("images/cat.png")
 .bind('MouseMove', function (e){
 
  		count += 1;
-    
+
 
 		if (count % 30 == 0 ) {
         if ( imageCount < 9) {
@@ -20,6 +24,10 @@ $(window).load(function () {
           imageCount = 1;
         };
         
+        var imageRotationAngle = getRandomInt(-90, 90);
+        console.log(imageRotationAngle);
+
+
 			  var bodyWidth = window.innerWidth;
   			var bodyHeight = window.innerHeight;
   			var randPosX = Math.floor((Math.random()*bodyWidth)) - 50;
@@ -29,7 +37,9 @@ $(window).load(function () {
   			image.style.top = randPosY + "px";
 			  image.style.left = randPosX + "px";
   			image.style.position = "absolute";
+        image.style.webkitTransform = "rotate(-" + imageRotationAngle + "deg)";
   			document.getElementById("screen").appendChild(image);
+
 		};
 
     if ((count % 50 == 0) && (width < 100)) {
